@@ -24,14 +24,16 @@ entities:
     name: CO2 levels
     class: safety
     dps:
+      # The device reports "alarm" while below its alarm level and
+      # "normal" once above it (tested on the BREATHE Airmonitor Plus).
       - id: 1
         type: string
         name: sensor
         mapping:
           - dps_val: "alarm"
-            value: true
-          - dps_val: "normal"
             value: false
+          - dps_val: "normal"
+            value: true
   - entity: select
     name: Alarm volume
     category: config
@@ -256,14 +258,16 @@ entities:
     name: PM2.5 levels
     class: safety
     dps:
+      # The device reports "alarm" while below its alarm level and
+      # "normal" once above it (tested on the BREATHE Airmonitor Plus).
       - id: 106
         type: string
         name: sensor
         mapping:
           - dps_val: "alarm"
-            value: true
-          - dps_val: "normal"
             value: false
+          - dps_val: "normal"
+            value: true
   - entity: switch
     name: Screen timeout
     category: config

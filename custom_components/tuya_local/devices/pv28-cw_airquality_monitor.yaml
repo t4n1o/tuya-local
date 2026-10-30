@@ -2,6 +2,10 @@ name: 8 in 1 air quality
 products:
   - id: yrr3eiyiacm31ski
     model: PV28-CW
+  - id: 68e4caqhuw9j530a
+    manufacturer: BREATHE
+    model: Airmonitor Plus
+    model_id: BTL40001
 entities:
   - entity: sensor
     class: carbon_dioxide
@@ -14,6 +18,7 @@ entities:
       - id: 103
         name: current_humidity
         type: integer
+        optional: true
         hidden: true
   - entity: binary_sensor
     name: CO2 levels
@@ -27,42 +32,42 @@ entities:
             value: true
           - dps_val: "normal"
             value: false
-  # - entity: select
-  #   name: Alarm volume
-  #   category: config
-  #   dps:
-  #     - id: 5
-  #       type: string
-  #       name: option
-  #       optional: true
-  #       mapping:
-  #         - dps_val: low
-  #           value: "low"
-  #         - dps_val: middle
-  #           value: "middle"
-  #         - dps_val: high
-  #           value: "high"
-  #         - dps_val: mute
-  #           value: "mute"
-  # - entity: select
-  #   name: Alarm melody
-  #   category: config
-  #   dps:
-  #     - id: 6
-  #       type: string
-  #       name: option
-  #       optional: true
-  #       mapping:
-  #         - dps_val: "ringtone_1"
-  #           value: "ringtone_1"
-  #         - dps_val: "ringtone_2"
-  #           value: "ringtone_2"
-  #         - dps_val: "ringtone_3"
-  #           value: "ringtone_3"
-  #         - dps_val: "ringtone_4"
-  #           value: "ringtone_4"
-  #         - dps_val: "ringtone_5"
-  #           value: "ringtone_5"
+  - entity: select
+    name: Alarm volume
+    category: config
+    dps:
+      - id: 5
+        type: string
+        name: option
+        optional: true
+        mapping:
+          - dps_val: low
+            value: "low"
+          - dps_val: middle
+            value: "middle"
+          - dps_val: high
+            value: "high"
+          - dps_val: mute
+            value: "mute"
+  - entity: select
+    name: Alarm melody
+    category: config
+    dps:
+      - id: 6
+        type: string
+        name: option
+        optional: true
+        mapping:
+          - dps_val: "ringtone_1"
+            value: "ringtone_1"
+          - dps_val: "ringtone_2"
+            value: "ringtone_2"
+          - dps_val: "ringtone_3"
+            value: "ringtone_3"
+          - dps_val: "ringtone_4"
+            value: "ringtone_4"
+          - dps_val: "ringtone_5"
+            value: "ringtone_5"
   # - entity: number
   #   name: Alarm duration
   #   category: config
@@ -97,6 +102,7 @@ entities:
       - id: 14
         type: string
         name: sensor
+        optional: true
         mapping:
           - dps_val: normal
             value: battery
@@ -111,19 +117,20 @@ entities:
         name: sensor
         unit: "%"
         class: measurement
-  # - entity: number
-  #   name: Screen brightness
-  #   category: config
-  #   dps:
-  #     - id: 17
-  #       type: integer
-  #       name: value
-  #       unit: "%"
-  #       range:
-  #         min: 0
-  #         max: 100
-  #       mapping:
-  #         - step: 1
+  - entity: number
+    name: Screen brightness
+    category: config
+    dps:
+      - id: 17
+        type: integer
+        name: value
+        optional: true
+        unit: "%"
+        range:
+          min: 0
+          max: 100
+        mapping:
+          - step: 1
   - entity: sensor
     class: temperature
     dps:
@@ -181,7 +188,7 @@ entities:
         name: value
         unit: "ppm"
         range:
-          min: 800
+          min: 600
           max: 2000
         mapping:
           - step: 1
@@ -274,9 +281,10 @@ entities:
     name: Timeout period
     category: config
     dps:
-      - id: 105
+      - id: 109
         type: integer
         name: value
+        optional: true
         unit: "s"
         range:
           min: 10
